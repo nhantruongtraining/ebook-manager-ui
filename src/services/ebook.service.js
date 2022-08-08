@@ -4,19 +4,23 @@ const getAll = () => {
     return httpClient.get('/ebooks');
 }
 
-const create = data => {
+const create = (data) => {
     return httpClient.post('/ebooks', data);
 }
 
-const get = id => {
+const findByTitle = (title) => {
+    return httpClient.get(`ebooks/?title=${title}`);
+}
+
+const get = (id) => {
     return httpClient.get(`/ebooks/${id}`);
 }
 
-const update = data => {
+const update = (data) => {
     return httpClient.put('/ebooks', data);
 }
 
-const remove = id => {
+const remove = (id) => {
     return httpClient.delete(`/ebooks/${id}`);
 }
-export default { getAll, create, get, update, remove };
+export default { getAll, create, findByTitle, get, update, remove };

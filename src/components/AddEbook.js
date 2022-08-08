@@ -7,8 +7,8 @@ const AddEbook = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [publishYear, setYear] = useState('');
-    const [publisherId, setPublisher] = useState('');
     const [languageId, setLanguage] = useState('');
+    const [publisherId, setPublisher] = useState('');
     const [categoryId, setCategory] = useState('');
     const navigate = useNavigate();
     const { id } = useParams();
@@ -39,13 +39,14 @@ const AddEbook = () => {
     }
     useEffect(() => {
         if (id) {
+
             ebookService.get(id)
                 .then(ebook => {
                     setTitle(ebook.data.title);
                     setDescription(ebook.data.description);
                     setYear(ebook.data.publishYear);
-                    setPublisher(ebook.data.publisherId);
                     setLanguage(ebook.data.languageId);
+                    setPublisher(ebook.data.publisherId);
                     setCategory(ebook.data.categoryId);
                 })
                 .catch(error => {
@@ -53,6 +54,7 @@ const AddEbook = () => {
                 })
         }
     }, [])
+
     return (
         <div className="container">
             <h3>Add Ebook</h3>
@@ -68,13 +70,13 @@ const AddEbook = () => {
                     <input type="text" className="form-control col-4" id="publishYear" value={publishYear} onChange={(e) => setYear(e.target.value)} placeholder="publishing year" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="publisherId" value={publisherId} onChange={(e) => setTitle(e.target.value)} placeholder="publisher id" />
+                    <input type="text" className="form-control col-4" id="languageId" value={languageId} onChange={(e) => setLanguage(e.target.value)} placeholder="language id" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="languageId" value={languageId} onChange={(e) => setTitle(e.target.value)} placeholder="language id" />
+                    <input type="text" className="form-control col-4" id="publisherId" value={publisherId} onChange={(e) => setPublisher(e.target.value)} placeholder="publisher id" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="categoryId" value={categoryId} onChange={(e) => setTitle(e.target.value)} placeholder="category id" />
+                    <input type="text" className="form-control col-4" id="categoryId" value={categoryId} onChange={(e) => setCategory(e.target.value)} placeholder="category id" />
                 </div>
                 <div>
                     <button onClick={(e) => saveEbook(e)} className="btn btn-primary">Save</button>
