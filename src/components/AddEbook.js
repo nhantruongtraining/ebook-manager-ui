@@ -41,7 +41,7 @@ const AddEbook = () => {
         if (id) {
             ebookService.get(id)
                 .then(ebook => {
-                    setTitle(ebook.data.name);
+                    setTitle(ebook.data.title);
                     setDescription(ebook.data.description);
                     setYear(ebook.data.year);
                     setPublisher(ebook.data.publisher);
@@ -52,7 +52,7 @@ const AddEbook = () => {
                     console.log('Something went wrong', error);
                 })
         }
-    }, [id])
+    }, [])
     return (
         <div className="container">
             <h3>Add Ebook</h3>
