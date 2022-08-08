@@ -5,7 +5,7 @@ const getAll = () => {
 }
 
 const create = data => {
-    return httpClient.post("/ebooks", data);
+    return httpClient.post('/ebooks', data);
 }
 
 const get = id => {

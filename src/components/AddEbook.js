@@ -6,17 +6,17 @@ import ebookService from "../services/ebook.service";
 const AddEbook = () => {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [year, setYear] = useState('');
-    const [publisher, setPublisher] = useState('');
-    const [language, setLanguage] = useState('');
-    const [category, setCategory] = useState('');
+    const [publishYear, setYear] = useState('');
+    const [publisherId, setPublisher] = useState('');
+    const [languageId, setLanguage] = useState('');
+    const [categoryId, setCategory] = useState('');
     const navigate = useNavigate();
     const { id } = useParams();
 
     const saveEbook = (e) => {
         e.preventDefault();
 
-        const ebook = { id, title, description, year, publisher, language, category };
+        const ebook = { id, title, description, publishYear, publisherId, languageId, categoryId };
         if (id) {
             // update
             ebookService.update(ebook)
@@ -43,10 +43,10 @@ const AddEbook = () => {
                 .then(ebook => {
                     setTitle(ebook.data.title);
                     setDescription(ebook.data.description);
-                    setYear(ebook.data.year);
-                    setPublisher(ebook.data.publisher);
-                    setLanguage(ebook.data.language);
-                    setCategory(ebook.data.category);
+                    setYear(ebook.data.publishYear);
+                    setPublisher(ebook.data.publisherId);
+                    setLanguage(ebook.data.languageId);
+                    setCategory(ebook.data.categoryId);
                 })
                 .catch(error => {
                     console.log('Something went wrong', error);
@@ -59,22 +59,22 @@ const AddEbook = () => {
             <hr />
             <form>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="title" onChange={(e) => setTitle(e.target.value)} placeholder="title" />
+                    <input type="text" className="form-control col-4" id="title" value={title} onChange={(e) => setTitle(e.target.value)} placeholder="title" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="description" onChange={(e) => setDescription(e.target.value)} placeholder="description" />
+                    <input type="text" className="form-control col-4" id="description" value={description} onChange={(e) => setDescription(e.target.value)} placeholder="description" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="year" onChange={(e) => setYear(e.target.value)} placeholder="publishing year" />
+                    <input type="text" className="form-control col-4" id="publishYear" value={publishYear} onChange={(e) => setYear(e.target.value)} placeholder="publishing year" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="publisher" onChange={(e) => setTitle(e.target.value)} placeholder="publisher id" />
+                    <input type="text" className="form-control col-4" id="publisherId" value={publisherId} onChange={(e) => setTitle(e.target.value)} placeholder="publisher id" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="language" onChange={(e) => setTitle(e.target.value)} placeholder="language id" />
+                    <input type="text" className="form-control col-4" id="languageId" value={languageId} onChange={(e) => setTitle(e.target.value)} placeholder="language id" />
                 </div>
                 <div className="form-group">
-                    <input type="text" className="form-control col-4" id="category" onChange={(e) => setTitle(e.target.value)} placeholder="category id" />
+                    <input type="text" className="form-control col-4" id="categoryId" value={categoryId} onChange={(e) => setTitle(e.target.value)} placeholder="category id" />
                 </div>
                 <div>
                     <button onClick={(e) => saveEbook(e)} className="btn btn-primary">Save</button>
