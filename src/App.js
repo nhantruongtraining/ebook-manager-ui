@@ -5,7 +5,7 @@ import NotFound from './NotFound';
 import EbookList from './components/EbookList';
 import AddEbook from './components/AddEbook';
 // import SearchResults from './components/SearchResults';
-import './App.css';
+import './App.scss';
 
 function App() {
   return (
