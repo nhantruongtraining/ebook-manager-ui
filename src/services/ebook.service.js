@@ -16,11 +16,12 @@ const get = (id) => {
     return httpClient.get(`/ebooks/${id}`);
 }
 
-const update = (data) => {
-    return httpClient.put('/ebooks', data);
+const update = (data, id) => {
+    return httpClient.put(`/ebooks/${id}`, data);
 }
 
 const remove = (id) => {
     return httpClient.delete(`/ebooks/${id}`);
 }
-export default { getAll, create, findByTitle, get, update, remove };
+const ebookService = { getAll, create, findByTitle, get, update, remove };
+export default ebookService;

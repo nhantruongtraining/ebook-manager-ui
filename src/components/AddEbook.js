@@ -19,7 +19,7 @@ const AddEbook = () => {
         const ebook = { id, title, description, publishYear, publisherId, languageId, categoryId };
         if (id) {
             // update
-            ebookService.update(ebook)
+            ebookService.update(ebook, ebook.id)
                 .then(response => {
                     navigate('/');
                 })

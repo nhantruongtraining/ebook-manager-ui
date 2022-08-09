@@ -69,9 +69,9 @@ const EbookList = () => {
                     </thead>
                     <tbody>
                         {
-                            ebooks.map(ebook => (
+                            ebooks.map((ebook, index) => (
                                 <tr key={ebook.id}>
-                                    <td>{ebook.id}</td>
+                                    <td>{index + 1}</td>
                                     <td>{ebook.title}</td>
                                     <td>{ebook.description}</td>
                                     {/* <td>{ebook.language}</td> */}
