@@ -77,8 +77,8 @@ const EbookList = () => {
                                     {/* <td>{ebook.language}</td> */}
                                     <td>{ebook.category}</td>
                                     <td>
-                                        <Link className='btn btn-info' to={`/ebooks/edit/${ebook.id}`}>Update</Link>
-                                        <button className='btn btn-danger ml-2' onClick={() => {
+                                        <Link className='btn btn-outline-info btn-sm' to={`/ebooks/edit/${ebook.id}`}>Update</Link>
+                                        <button className='btn btn-outline-danger btn-sm ml-2' onClick={() => {
                                             handleDelete(ebook.id);
                                         }}>Delete</button>
                                     </td>
