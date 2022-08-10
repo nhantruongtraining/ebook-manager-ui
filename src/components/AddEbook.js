@@ -13,6 +13,8 @@ const AddEbook = () => {
     const navigate = useNavigate();
     const { id } = useParams();
 
+    const [pageTitle, setPageTitle] = useState('');
+
     const saveEbook = (e) => {
         e.preventDefault();
 
@@ -39,7 +41,7 @@ const AddEbook = () => {
     }
     useEffect(() => {
         if (id) {
-
+            setPageTitle('Update Ebook');
             ebookService.get(id)
                 .then(ebook => {
                     setTitle(ebook.data.title);
@@ -52,12 +54,14 @@ const AddEbook = () => {
                 .catch(error => {
                     console.log('Something went wrong', error);
                 })
+        } else {
+            setPageTitle('Add New Ebook');
         }
     }, [])
 
     return (
         <div className="container">
-            <h3>Add Ebook</h3>
+            <h3>{pageTitle}</h3>
             <hr />
             <form>
                 <div className="form-group">
